@@ -19,9 +19,10 @@ exports.auth = (req, res, next) => {
 
 exports.adminCheck = async (req, res, next) => {
   const { name } = req.user;
-  const adminUser = User.findOne({ name }).exec();
-
-    if(adminUser.role !== 'admin'){
-        res.status(403).json({err: 'Admin Access denied'})
-    }
+  const adminUser = await User.findOne({ username: name }).exec();
+  if (adminUser.role !== "admin") {
+    res.status(403).json({ err: "Admin Access denied" });
+  } else {
+    next();
+  }
 };

@@ -5,7 +5,7 @@ const User = require("../models/User");
 const { createRegister, login, currentUser } = require("../controllers/auth");
 
 // Middleware
-const { auth } = require("../middleware/auth");
+const { auth, adminCheck } = require("../middleware/auth");
 
 // @route POST  localhost:8080/api/register
 // @desc route register
@@ -25,6 +25,6 @@ router.post("/current-user", auth, currentUser);
 // @route POST  localhost:8080/api/current-admin
 // @desc route current-admin
 // @access Private
-router.post("/current-user", auth, currentUser);
+router.post("/current-admin", auth, adminCheck, currentUser);
 
 module.exports = router;
