@@ -1,3 +1,5 @@
-# BSDS-Web-App
+# MERN-CRUD
 
-1. Build Selection Cabinet Type App
+1. Login System
+  - Authentication
+  - JWT
